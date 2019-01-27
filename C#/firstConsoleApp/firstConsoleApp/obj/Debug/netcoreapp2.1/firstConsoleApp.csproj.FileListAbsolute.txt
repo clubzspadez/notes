@@ -1,0 +1,11 @@
+/Users/Jona/Desktop/C#/firstConsoleApp/firstConsoleApp/bin/Debug/netcoreapp2.1/firstConsoleApp.deps.json
+/Users/Jona/Desktop/C#/firstConsoleApp/firstConsoleApp/bin/Debug/netcoreapp2.1/firstConsoleApp.runtimeconfig.json
+/Users/Jona/Desktop/C#/firstConsoleApp/firstConsoleApp/bin/Debug/netcoreapp2.1/firstConsoleApp.runtimeconfig.dev.json
+/Users/Jona/Desktop/C#/firstConsoleApp/firstConsoleApp/bin/Debug/netcoreapp2.1/firstConsoleApp.dll
+/Users/Jona/Desktop/C#/firstConsoleApp/firstConsoleApp/bin/Debug/netcoreapp2.1/firstConsoleApp.pdb
+/Users/Jona/Desktop/C#/firstConsoleApp/firstConsoleApp/obj/Debug/netcoreapp2.1/firstConsoleApp.csprojAssemblyReference.cache
+/Users/Jona/Desktop/C#/firstConsoleApp/firstConsoleApp/obj/Debug/netcoreapp2.1/firstConsoleApp.csproj.CoreCompileInputs.cache
+/Users/Jona/Desktop/C#/firstConsoleApp/firstConsoleApp/obj/Debug/netcoreapp2.1/firstConsoleApp.AssemblyInfoInputs.cache
+/Users/Jona/Desktop/C#/firstConsoleApp/firstConsoleApp/obj/Debug/netcoreapp2.1/firstConsoleApp.AssemblyInfo.cs
+/Users/Jona/Desktop/C#/firstConsoleApp/firstConsoleApp/obj/Debug/netcoreapp2.1/firstConsoleApp.dll
+/Users/Jona/Desktop/C#/firstConsoleApp/firstConsoleApp/obj/Debug/netcoreapp2.1/firstConsoleApp.pdb
