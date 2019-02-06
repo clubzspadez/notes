@@ -54,5 +54,19 @@ puts sentence + sentence2
 #!Common methods
 
 #!Variable Assignment
+# * Variables are Pass-by-Value:
+ a = "Ruby"
+b = a
+#a => "Ruby"
+#b => "Ruby
+a.object_id
+#Example of a spot in memory that the variable points to => 70211214754080
+b.object_id
+# the variable b would have the same memory location => 70211214754080
 
+a = "I have changed"
+# a => 'I have changed' is result of a pointing to a new place in memory for the current string
+#  while b still points to the old address for the string "Ruby"
+#
+#
 #!Escaping
