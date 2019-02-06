@@ -7,8 +7,6 @@
 puts 'hello world'
 
 puts 'okay this is working!'
-
-
 # Defining Methods in RUb
 
 def methodName(string)
@@ -40,7 +38,13 @@ methodName('this is a string')
 
 
 #!String Concatenation
+sentence = 'My name is Jonathan'
+p sentence
 
+sentence2 = ' and this is my additional sentence'
+
+puts sentence + sentence2
+ 
 #!String Interpolation
 
 #!Methods
