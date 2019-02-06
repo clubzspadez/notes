@@ -7,8 +7,6 @@
 puts 'hello world'
 
 puts 'okay this is working!'
-
-
 # Defining Methods in RUb
 
 def methodName(string)
@@ -40,7 +38,13 @@ methodName('this is a string')
 
 
 #!String Concatenation
+sentence = 'My name is Jonathan'
+p sentence
 
+sentence2 = ' and this is my additional sentence'
+
+puts sentence + sentence2
+ 
 #!String Interpolation
 
 #!Methods
@@ -50,19 +54,5 @@ methodName('this is a string')
 #!Common methods
 
 #!Variable Assignment
-# * Variables are Pass-by-Value:
- a = "Ruby"
-b = a
-#a => "Ruby"
-#b => "Ruby
-a.object_id
-#Example of a spot in memory that the variable points to => 70211214754080
-b.object_id
-# the variable b would have the same memory location => 70211214754080
 
-a = "I have changed"
-# a => 'I have changed' is result of a pointing to a new place in memory for the current string
-#  while b still points to the old address for the string "Ruby"
-#
-#
 #!Escaping
