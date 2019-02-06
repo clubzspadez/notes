@@ -44,9 +44,25 @@ methodName('this is a string')
 #!String Interpolation
 
 #!Methods
+# * Common methods in RUBY:
+# :nesting, :used_modules, :constants, :new, :allocate, :superclass, :<=>, :<=, :>=, :==, :===, :autoload?, :autoload, :included_modules, :include?, :name, :ancestors, :attr, :attr_reader, :attr_writer, :attr_accessor, :instance_methods, :public_instance_methods, :protected_instance_methods, :private_instance_methods, :const_get, :const_set, :const_defined?, :class_variables, :remove_class_variable, :class_variable_get, :class_variable_set, :class_variable_defined?, :public_constant, :freeze, :inspect, :deprecate_constant, :private_constant, :const_missing, :singleton_class?, :prepend, :class_exec, :module_eval, :class_eval, :include, :<, :>, :remove_method, :undef_method, :alias_method, :protected_method_defined?, :module_exec, :method_defined?, :public_method_defined?, :to_s, :public_class_method, :public_instance_method, :define_method, :private_method_defined?, :private_class_method, :instance_method, :instance_variable_set, :instance_variable_defined?, :remove_instance_variable, :instance_of?, :kind_of?, :is_a?, :tap, :instance_variable_get, :instance_variables, :method, :public_method, :singleton_method, :define_singleton_method, :public_send, :extend, :to_enum, :enum_for, :pp, :=~, :!~, :eql?, :respond_to?, :object_id, :send, :display, :nil?, :hash, :class, :singleton_class, :clone, :dup, :itself, :yield_self, :taint, :tainted?, :untrust, :untaint, :trust, :untrusted?, :methods, :frozen?, :protected_methods, :singleton_methods, :public_methods, :private_methods, :!, :equal?, :instance_eval, :instance_exec, :!=, :__send__, :__id__]
 
 #!Common methods
 
 #!Variable Assignment
+# * Variables are Pass-by-Value:
+ a = "Ruby"
+b = a
+#a => "Ruby"
+#b => "Ruby
+a.object_id
+#Example of a spot in memory that the variable points to => 70211214754080
+b.object_id
+# the variable b would have the same memory location => 70211214754080
 
+a = "I have changed"
+# a => 'I have changed' is result of a pointing to a new place in memory for the current string
+#  while b still points to the old address for the string "Ruby"
+#
+#
 #!Escaping
