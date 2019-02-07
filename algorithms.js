@@ -204,4 +204,29 @@ function fib(nth) {
   //  [0, 1, 2, 3, 4]i
 }
 
-console.log(fib(5));
+console.log(fib(5))
+
+// create a queue in javascript
+
+class Queue {
+ constructor(){
+   this.state = [];
+}
+
+ add(args){
+ this.state.unshift(...args);
+}
+
+ remove(){
+ return this.state.pop();
+}
+}
+
+
+const newQueue = new Queue();
+
+newQueue.add(3,4);
+
+newQueue.remove();
+
+
