@@ -65,4 +65,26 @@ a = "I have changed"
 #  while b still points to the old address for the string "Ruby"
 #
 #
-#!Escaping
+#!Escapin
+#
+
+
+
+#Assignment for checking input Ruby
+#
+def getFullName
+	puts "What is your first name?"
+	firstName = gets.chomp
+	puts "What is your last name?"
+	lastName = gets.chomp
+	return printName(firstName, lastName)
+end
+
+def printName(first, last)
+	puts "Your full name is #{first} #{last}"
+	fullname = first + " " + last
+	puts "Your name reversed is #{fullname.reverse}"
+	puts "Your name has #{first.length + last.length} characters in it"
+end
+
+getFullName
