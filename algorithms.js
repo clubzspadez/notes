@@ -220,6 +220,10 @@ class Queue {
  remove(){
  return this.state.pop();
 }
+
+ peek(){
+ return this.state[this.state.length - 1];
+}
 }
 
 
