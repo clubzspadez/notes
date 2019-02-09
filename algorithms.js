@@ -233,4 +233,19 @@ newQueue.add(3,4);
 
 newQueue.remove();
 
+function weave(queOne, queTwo){
+ const combineQueue = new Queue();
+ 
+ while(queOne.peek() || queTwo.peek()){
+  if(queOne.peek()){
+    combineQueue.add(queOne.remove())
+ }
+
+ if(queTwo.peek()){
+    combineQueue.add(queTwo.remove())
+ } 
+
+ }
+ return combineQueue;
+}
 
