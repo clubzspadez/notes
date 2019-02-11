@@ -94,3 +94,25 @@ end
 getFullName
 
 #update
+#
+#Object Oriented Programming 
+#
+#
+class Car
+ 
+ #constructor
+ def initialize(numberOfWheels, tankType, seatingCapacity, maxVelocity)
+  @numberOfWheels = numberOfWheels
+  @tankType = tankType
+  @seatingCapacity = seatingCapacity
+  @maxVelocity = maxVelociy
+ end
+
+
+end
+
+# to initialize a new instance for the class
+#
+lambo = Vehicle.new(4, 'Gas', 2, 250)
+#
+#
