@@ -99,6 +99,10 @@ getFullName
 #
 #
 class Car
+ #attr_accessor: implements both setter and getter for overwriting values or setting
+ #attr_writer: implements setter
+ #attr_reader: implements getter
+ attr_accessor :numberOfWheels
  
  #constructor
  def initialize(numberOfWheels, tankType, seatingCapacity, maxVelocity)
@@ -107,7 +111,12 @@ class Car
   @seatingCapacity = seatingCapacity
   @maxVelocity = maxVelociy
  end
-
+ 
+ #methods can be added to this class
+ 
+ def methodOne 
+  #we can access the method from the instance of the car, ie: lambo.methodOne
+ end
 
 end
 
@@ -115,4 +124,7 @@ end
 #
 lambo = Vehicle.new(4, 'Gas', 2, 250)
 #
+lambo.numberOfWheels # => 4
+lambo.numberOfWheels = 6 
+lambo.numberOfWheels # => 6
 #
