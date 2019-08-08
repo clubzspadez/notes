@@ -106,6 +106,16 @@
  * 
  * 
  * 
- * 
- * 
+ * * What is node? -> A wrapper around a VM(virtual machine) like V8/Chakra
+ *  - Comes with some feature rich built in modules(fs, http, crypto, zip, ...)
+ *  - Comes with Asynchronous APIs (no threads)
+ *  - C++ add ons
+ *  - ships with great Debugger and other utilities
+ *  - NPM
+ *  - Module dependancy manager
+ *
+ *
+ *
+ *
 */
+
