@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptSettings">
@@ -5,3 +6,5 @@
   </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="ruby-2.3.7-p456" project-jdk-type="RUBY_SDK" />
 </project>
+=======
+>>>>>>> 23b6223862ace5116b39c4511c7179ef8a26df83

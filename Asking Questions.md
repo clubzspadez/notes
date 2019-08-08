@@ -72,4 +72,3 @@ Use a debugger to help you. If you don’t know how to use a debugger or don’t
 - When you get an answer back, take time to digest it carefully and fully understand what the person is saying. Keep in mind they might not actually be right. So you need to verify that their solution works.
 - Thank each person that helped you and remember that they didn’t have to answer your question, but for some reason they wanted to.
 
-- Gordon Zhu @ watchandcode.com
