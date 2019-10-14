@@ -11,7 +11,7 @@
  *                 |  $$$$$$/
  *                  \______/
  */
-
+-- ****** POSTGRES UNLIKE MYSQL TREATS STRINGS AS CASE SENSITIVE IN ALL CIRCUMSTANCES
 /* How to create a database*/
 CREATE DATABASE database_name;
 
@@ -248,3 +248,177 @@ INSERT INTO dogs(age) VALUES (3), (6);
 -- -- |                    |                     |       6 |
 -- -- +--------------------+---------------------+----------+
 --  Our columns name and breed have empty strings ''  as we cannot default to null but instead to characters
+
+/***
+ *       _____      _   _   _               _____        __            _ _
+ *      / ____|    | | | | (_)             |  __ \      / _|          | | |
+ *     | (___   ___| |_| |_ _ _ __   __ _  | |  | | ___| |_ __ _ _   _| | |_ ___
+ *      \___ \ / _ \ __| __| | '_ \ / _` | | |  | |/ _ \  _/ _` | | | | | __/ __|
+ *      ____) |  __/ |_| |_| | | | | (_| | | |__| |  __/ || (_| | |_| | | |_\__ \
+ *     |_____/ \___|\__|\__|_|_| |_|\__, | |_____/ \___|_| \__,_|\__,_|_|\__|___/
+ *                                   __/ |
+ *                                  |___/
+ */
+-- If we need to create a table with default values we can do so with the following
+-- By providing the DEFAULT flag we can then pass a value that matches the data type for the column
+CREATE TABLE table_name
+  (
+    name VARCHAR(20) DEFAULT 'no name provided',
+    age INT DEFAULT 99
+  );
+
+-- +-------+---------------+------+-----+--------------------+----------+
+-- | FIELD |     TYPE      | NULL | KEY |      DEFAULT       | EXTRA    |
+-- +-------+---------------+------+-----+--------------------+----------+
+-- | name  |  varchar(100) | YES  |     | 'no name provided' |          |
+-- | age   |  int(11)      | YES  |     | 99                 |          |
+-- +-------+---------------+------+-----+--------------------+----------+
+CREATE TABLE dogs(
+    name VARCHAR(10) DEFAULT 'No name entered',
+    age INT DEFAULT 1
+);
+-- When we insert into this table we can provide no values, and default values.
+-- Since we are not specifying NO NULL then any values we do not provide will default to NULL in the column for that row
+INSERT INTO dogs(age) VALUES (3), (6);
+DESC dogs;
+or
+SELECT * FROM dogs;
+-- +-------------------+--------------+
+-- | name(varchar(10)) | age(int(11)) |
+-- +-------------------+--------------+
+-- | no name entered  |            3 |
+-- | no name entered  |            6 |
+-- +-------------------+--------------+
+
+-- If we specify NO NULL for name, then when we attempt to put NULL values we will receive an error
+
+
+/***
+ *    ______     _                              _   __
+ *    | ___ \   (_)                            | | / /
+ *    | |_/ / __ _ _ __ ___   __ _ _ __ _   _  | |/ /  ___ _   _ ___
+ *    |  __/ '__| | '_ ` _ \ / _` | '__| | | | |    \ / _ \ | | / __|
+ *    | |  | |  | | | | | | | (_| | |  | |_| | | |\  \  __/ |_| \__ \
+ *    \_|  |_|  |_|_| |_| |_|\__,_|_|   \__, | \_| \_/\___|\__, |___/
+ *                                       __/ |              __/ |
+ *                                      |___/              |___/
+ * Primary key - A Unique Identifier
+ /
+-- When dealing with data/tables we need to make sure that our rows can be identified
+-- This means assigning primary keys so that our data can be retrieved
+-- When creating a table with a primary key, you will need to pass the column that will be the primary key
+ */
+ CREATE TABLE dogs(
+    dog_id INT NOT NULL,
+    name VARCHAR(10) DEFAULT 'No name entered',
+    age INT DEFAULT 1,
+    PRIMARY KEY (dog_id)
+);
+or
+ CREATE TABLE dogs(
+    dog_id INT NOT NULL PRIMARY KEY,
+    name VARCHAR(10) DEFAULT 'No name entered',
+    age INT DEFAULT 1
+);
+
+-- This will create a table like the following below
+-- +--------+---------------+------+-----+--------------------+----------+
+-- | FIELD  |     TYPE      | NULL | KEY |      DEFAULT       | EXTRA    |
+-- +--------+---------------+------+-----+--------------------+----------+
+-- | dog_id |  int          | NO   | PRI |                    |          |
+-- | name   |  varchar(100) | YES  |     | 'no name provided' |          |
+-- | age    |  int(11)      | YES  |     | 1                  |          |
+-- +--------+---------------+------+-----+--------------------+----------+
+-- As you will see dog_id will have the key coloumn set as primary
+INSERT INTO dogs(dog_id, name, age) VALUES (1,'blue',3), (2,'jojo',6);
+-- +--------+-------------------+--------------+
+-- | dog_id | name(varchar(10)) | age(int(11)) |
+-- +--------+-------------------+--------------+
+-- |      1 | blue              |            3 |
+-- |      2 | jojo              |            6 |
+-- +--------+-------------------+--------------+
+-- However, we may not want to manually assign ID's for each row as we can possible forget what id the last row was
+-- Instead when we create the table we can assign a random unique id or generate/increment the id
+ CREATE TABLE dogs(
+    dog_id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(10) DEFAULT 'No name entered',
+    age INT DEFAULT 1,
+    PRIMARY KEY (dog_id)
+);
+-- You can also do the following to set dog_id as primary
+ CREATE TABLE dogs(
+    dog_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(10) DEFAULT 'No name entered',
+    age INT DEFAULT 1
+);
+-- Now our dog_id field will contain auto increment as an extra property on the table
+-- +--------+---------------+------+-----+--------------------+----------------+
+-- | FIELD  |     TYPE      | NULL | KEY |      DEFAULT       |    EXTRA       |
+-- +--------+---------------+------+-----+--------------------+----------------+
+-- | dog_id |  int          | NO   | PRI |                    | AUTO_INCREMENT |
+-- | name   |  varchar(100) | YES  |     | 'no name provided' |                |
+-- | age    |  int(11)      | YES  |     | 1                  |                |
+-- +--------+---------------+------+-----+--------------------+----------------+
+INSERT INTO dogs(name, age) VALUES ('blue',3), ('jojo',6);
+-- Now we can provide name and age without having to worry about the id being assigned
+-- +--------+-------------------+--------------+
+-- | dog_id | name(varchar(10)) | age(int(11)) |
+-- +--------+-------------------+--------------+
+-- |      1 | blue              |            3 |
+-- |      2 | jojo              |            6 |
+-- +--------+-------------------+--------------+
+
+
+/***
+ *              _____                    _____                    _____                    _____
+ *             /\    \                  /\    \                  /\    \                  /\    \
+ *            /::\    \                /::\    \                /::\____\                /::\    \
+ *           /::::\    \              /::::\    \              /:::/    /               /::::\    \
+ *          /::::::\    \            /::::::\    \            /:::/    /               /::::::\    \
+ *         /:::/\:::\    \          /:::/\:::\    \          /:::/    /               /:::/\:::\    \
+ *        /:::/  \:::\    \        /:::/__\:::\    \        /:::/    /               /:::/  \:::\    \
+ *       /:::/    \:::\    \      /::::\   \:::\    \      /:::/    /               /:::/    \:::\    \
+ *      /:::/    / \:::\    \    /::::::\   \:::\    \    /:::/    /      _____    /:::/    / \:::\    \
+ *     /:::/    /   \:::\    \  /:::/\:::\   \:::\____\  /:::/____/      /\    \  /:::/    /   \:::\ ___\
+ *    /:::/____/     \:::\____\/:::/  \:::\   \:::|    ||:::|    /      /::\____\/:::/____/     \:::|    |
+ *    \:::\    \      \::/    /\::/   |::::\  /:::|____||:::|____\     /:::/    /\:::\    \     /:::|____|
+ *     \:::\    \      \/____/  \/____|:::::\/:::/    /  \:::\    \   /:::/    /  \:::\    \   /:::/    /
+ *      \:::\    \                    |:::::::::/    /    \:::\    \ /:::/    /    \:::\    \ /:::/    /
+ *       \:::\    \                   |::|\::::/    /      \:::\    /:::/    /      \:::\    /:::/    /
+ *        \:::\    \                  |::| \::/____/        \:::\__/:::/    /        \:::\  /:::/    /
+ *         \:::\    \                 |::|  ~|               \::::::::/    /          \:::\/:::/    /
+ *          \:::\    \                |::|   |                \::::::/    /            \::::::/    /
+ *           \:::\____\               \::|   |                 \::::/    /              \::::/    /
+ *            \::/    /                \:|   |                  \::/____/                \::/____/
+ *             \/____/                  \|___|                   ~~                       ~~
+ *
+                                         Create Read Update Delete
+ - Create something in the table
+    - INSERT INTO (column_name) VALUES(data_value)
+ - Read something in the table
+    - SELECT *(all columns) or column_name1, column_name2 FROM table_name
+    - WHERE Clause -> Allows us to specify or set conditions
+    - Aliases -> Can be used to set a column name to an alias we want, or re-lable the column when we query
+        - example: SELECT cat_id AS id, name FROM cats;
+        - Our query will print our table with cat_id as id
+ - Update something in the table
+    - UPDATE table_name SET column_name='value' WHERE colmun_name='value';
+    - SET updates the column values for when the WHERE condition is met
+    - We can select columns from the table and then attempt to update them as well
+        - example:
+        - SELECT * FROM cats WHERE name='Kitty'; -> Returns table with only one row
+        - UPDATE cats SET name='Katz' WHERE name='Kitty'; -> Updates the row, so column name with value Kitty is updated to Katz
+ - Delete something in the table
+    - DELETE FROM table_name WHERE column_name='value';
+    - DELETE FROM table_name; -> removes all data from table
+ */
+
+
+/***
+ *     ______     ______     __  __     _____        ______     __  __     ______     __         __         ______     __   __     ______     ______     ______
+ *    /\  ___\   /\  == \   /\ \/\ \   /\  __-.     /\  ___\   /\ \_\ \   /\  __ \   /\ \       /\ \       /\  ___\   /\ "-.\ \   /\  ___\   /\  ___\   /\  ___\
+ *    \ \ \____  \ \  __<   \ \ \_\ \  \ \ \/\ \    \ \ \____  \ \  __ \  \ \  __ \  \ \ \____  \ \ \____  \ \  __\   \ \ \-.  \  \ \ \__ \  \ \  __\   \ \___  \
+ *     \ \_____\  \ \_\ \_\  \ \_____\  \ \____-     \ \_____\  \ \_\ \_\  \ \_\ \_\  \ \_____\  \ \_____\  \ \_____\  \ \_\\"\_\  \ \_____\  \ \_____\  \/\_____\
+ *      \/_____/   \/_/ /_/   \/_____/   \/____/      \/_____/   \/_/\/_/   \/_/\/_/   \/_____/   \/_____/   \/_____/   \/_/ \/_/   \/_____/   \/_____/   \/_____/
+ *
+ */
