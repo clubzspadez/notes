@@ -422,3 +422,45 @@ INSERT INTO dogs(name, age) VALUES ('blue',3), ('jojo',6);
  *      \/_____/   \/_/ /_/   \/_____/   \/____/      \/_____/   \/_/\/_/   \/_/\/_/   \/_____/   \/_____/   \/_____/   \/_/ \/_/   \/_____/   \/_____/   \/_____/
  *
  */
+
+--  Closet Inventory
+--  New DB shirts_db
+--  New table shirts
+-- shirt_id not null prim, article text, color text, shirt_size text, last_worn int
+-- seed data
+-- insert 1 purple medium last worn 50 days ago
+-- Select all shirts but print article and color
+-- select all medium shirts
+-- updata all polo shirts to be size L
+-- update the shirt last worn 15 days ago change last_warn to 0
+-- Update all white shirts change size to xs and color to off white
+-- Delete all old shirts last warn 200 days ago
+-- Delete all tank tops
+-- Delete all shirts
+-- Drop table
+
+
+
+-- Loading data from file source file_name.sql or from postgres cli -> \i filepath\file_name.sql
+
+
+
+/***
+ *     ________  _________  ________  ___  ________   ________         ________ ___  ___  ________   ________ _________  ___  ________  ________   ________
+ *    |\   ____\|\___   ___\\   __  \|\  \|\   ___  \|\   ____\       |\  _____\\  \|\  \|\   ___  \|\   ____\\___   ___\\  \|\   __  \|\   ___  \|\   ____\
+ *    \ \  \___|\|___ \  \_\ \  \|\  \ \  \ \  \\ \  \ \  \___|       \ \  \__/\ \  \\\  \ \  \\ \  \ \  \___\|___ \  \_\ \  \ \  \|\  \ \  \\ \  \ \  \___|_
+ *     \ \_____  \   \ \  \ \ \   _  _\ \  \ \  \\ \  \ \  \  ___      \ \   __\\ \  \\\  \ \  \\ \  \ \  \       \ \  \ \ \  \ \  \\\  \ \  \\ \  \ \_____  \
+ *      \|____|\  \   \ \  \ \ \  \\  \\ \  \ \  \\ \  \ \  \|\  \      \ \  \_| \ \  \\\  \ \  \\ \  \ \  \____   \ \  \ \ \  \ \  \\\  \ \  \\ \  \|____|\  \
+ *        ____\_\  \   \ \__\ \ \__\\ _\\ \__\ \__\\ \__\ \_______\      \ \__\   \ \_______\ \__\\ \__\ \_______\  \ \__\ \ \__\ \_______\ \__\\ \__\____\_\  \
+ *       |\_________\   \|__|  \|__|\|__|\|__|\|__| \|__|\|_______|       \|__|    \|_______|\|__| \|__|\|_______|   \|__|  \|__|\|_______|\|__| \|__|\_________\
+ *       \|_________|                                                                                                                                 \|_________|
+ *
+ *  -- String functions allow us to work and manipulate string values from specific columns
+ */
+
+--  CONCAT -> Combines two or strings. CONCAT(column_name1, 'text', column_name2)
+SELECT CONCAT(author_fname, ' ', author_lname) FROM books;
+
+--  CONCAT_WS -> Combines two or strings with a seperator between strings. CONCAT(column_name1, 'text', column_name2)
+
+
