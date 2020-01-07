@@ -16,7 +16,19 @@ def methodName(string)
 end
 
 #? It seems we can still pass arugments to methods with paranthesis or without
-methodName('this is a string')
+method_name('this is a string')
+
+#STYLE GUIDE:
+#
+# class names should be camelcased:
+ class CamelCase
+ end
+# file names, method names and variable names should be snake cased: snake_case
+#
+this_is_snake_case = "snake case"
+
+def this_is_a_method
+end
 
 
 
@@ -96,7 +108,7 @@ a = "I have changed"
 # - You will need to define your methods before hand.
 #
 #
-def getFullName
+def get_full_name
 	puts "What is your first name?"
 	firstName = gets.chomp
 	puts "What is your last name?"
@@ -105,7 +117,7 @@ def getFullName
   printName(firstName, lastName)
 end
 
-def printName(first, last)
+def print_name(first, last)
 	puts "Your full name is #{first} #{last}"
 	fullname = first + " " + last
 	puts "Your name reversed is #{fullname.reverse}"
