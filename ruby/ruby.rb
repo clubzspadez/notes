@@ -209,15 +209,22 @@ class Car
  #iimplements both setter and getter for overwriting values or setting
  #attr_writer: implements setter
  #attr_reader: implements getter
- attr_accessor :numberOfWheels
+ # attr_accessor allows for both getter and settors
+ attr_accessor :car_name, :seating_capacity
+ @car_name
 
  #constructor
- def initialize(numberOfWheels, tankType, seatingCapacity, maxVelocity)
-  @numberOfWheels = numberOfWheels
-  @tankType = tankType
-  @seatingCapacity = seatingCapacity
-  @maxVelocity = maxVelociy
+ def initialize( number_of_wheels, tank_type, seating_capacity, max_velocity)
+  @number_of_wheels = number_of_wheels
+  @tank_type = tank_type
+  @seating_capacity = seating_capacity
+  @max_velocity = max_velocity
  end
+
+ # setter method ->
+ # def car_name=(name)
+ #   @car_name = name
+ # end
 
  #methods can be added to this class
 
@@ -225,13 +232,22 @@ class Car
   #we can access the method from the instance of the car, ie: lambo.methodOne
  end
 
+  # the use of self is references the current instance of the object
+ # ie: for example you may have different instances of the car class
+ #  and they will have they own methods with their own data
+  def self.indentify_yourself
+    puts "Hey I am a class method"
+  end
+
 end
 
 # to initialize a new instance for the class
 #
 lambo = Vehicle.new(4, 'Gas', 2, 250)
-#
+# the setter method below can use assignment operator -> =
+lambo.car_name = "Jrod's wheels"
 lambo.numberOfWheels # => 4
 lambo.numberOfWheels = 6
 lambo.numberOfWheels # => 6
+#
 #
