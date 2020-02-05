@@ -260,9 +260,55 @@
 #  |  $$$$$$/|  $$$$$$/| $$ \  $$   | $$   | $$  | $$|  $$$$$$/| $$$$$$$$| $$$$$$$$| $$$$$$$$| $$  | $$|  $$$$$$/
 #   \______/  \______/ |__/  \__/   |__/   |__/  |__/ \______/ |________/|________/|________/|__/  |__/ \______/
 #
+#  -> Rails controllers connect apps models and views.
+#  -> Web requests sent to you app are routed to your controllers to get data from the model
+#  -> and can handle logic from when those requests are made
+#
+#  -> REST - Representational state transfer
+#   - in restful architectures clients initiate requests to servers
+#   - servers process those requests and return responses to the clients
+#                   _ _ _ _ _ _
+#                  |  client   |
+#                 |___________|
+#                    |   /\
+#                   |    |
+#                  \/   |
+#                  _ _ _ _ _ _
+#                 | server   |
+#                |___________|
+#
+#
+#
+#    Figure 3 - Table for Mapping DB actions to http verbs
+#       +-----------------+-----------+
+#       | Database Action | HTTP verb |
+#       +-----------------+-----------+
+#       | Create          | POST      |
+#       | Read            | GET       |
+#       | Update          | PATCH     |
+#       | Delete          | DELETE    |
+#       +-----------------+-----------+
+#
+#
+#
+#     Figure 4 - Table for default restful actions on rails
+#       +----------+--------------------------------+-----------+
+#       |  Action  |          Description           | HTTP Verb |
+#       +----------+--------------------------------+-----------+
+#       | index    | List all records               | GET       |
+#       | show     | list a record                  | GET       |
+#       | new      | Show form to create new record | GET       |
+#       | edit     | Show form to edit record       | GET       |
+#       | create   | Create new record              | POST      |
+#       | update   | Update existing record         | PATCH     |
+#       | destroy  | Destroy existing record        | DELETE    |
+#       +----------+--------------------------------+-----------+
+
+
 #
 #
 
+#
 #   /$$    /$$ /$$$$$$ /$$$$$$$$ /$$      /$$  /$$$$$$
 #  | $$   | $$|_  $$_/| $$_____/| $$  /$ | $$ /$$__  $$
 #  | $$   | $$  | $$  | $$      | $$ /$$$| $$| $$  \__/
