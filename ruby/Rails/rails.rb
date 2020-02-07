@@ -278,6 +278,9 @@
 #                |___________|
 #
 #
+#   -> In a rails app, the server that processes the requests return the responses to the controller
+#    - The controller is interacting with the client via URLS, and HTTP verbs
+#    - the following figure(3) shows the HTTPs verbs used in rest
 #
 #    Figure 3 - Table for Mapping DB actions to http verbs
 #       +-----------------+-----------+
@@ -288,6 +291,50 @@
 #       | Update          | PATCH     |
 #       | Delete          | DELETE    |
 #       +-----------------+-----------+
+#
+#   -> Rails incorporates its own actions other than the four common rest actions
+#   -> index action - displays all resources
+#   -> new action - used for forms for creating a new resource
+#   -> edit action - displays a form for editing existing resource
+#   * these actions have a corresponding method in the controller that has logic to access
+#    the database to fulfill these requests
+#   example:
+# -----------------------------------------------
+#     class PostsController < ApplicationController
+#       def index
+#          @posts = Post.all
+#       end
+#     end
+# -----------------------------------------------
+#
+#  == ROUTING ==
+#  -> The only way to get our controllers to perform the actions needed from the client
+#     we need to setup routes that can map the actions to our verbs
+#  -> Routes connect URLs to the code that compromises your application
+#
+#  * Resources *
+#  -> first application routes are located in config/routes.rb
+#  -> By default rails uses REST
+#
+#  Example of our posts routes
+# -----------------------------------------------
+#     Rails.application.routes.draw do
+#       resources :posts
+#     end
+# -----------------------------------------------
+#  -> using bin/rake routes in your cli will expose the current routes for your app
+# -----------------------------------------------
+#  $ bin/rake routes
+# Prefix Verb   URI Pattern        Controller#Action
+#  posts GET    /posts(.:format)   posts#index
+#      POST     /posts(.:format)   posts#create
+# -----------------------------------------------
+#  -> This information can help determine what verbs, url patterns, and controller actions
+#     are setup for your routes
+#  -> for example we can see that a GET request to /posts will hit our PostsController
+#     and hit the index method on the controller
+#  -> when you make changes to your app your routes will also change so run this command
+#     when needed
 #
 #
 #
