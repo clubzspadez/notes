@@ -10,7 +10,7 @@
 #
 #
 #
-#  DIRECTORIES
+# == DIRECTORIES ==
 #
 # /- app
 #    -> contains subdirectories for each part of the mvc architecture
@@ -43,7 +43,7 @@
 #
 #
 #
-# RAILS COMMANDS
+# == RAILS COMMANDS ==
 #  - GEM
 #    -> this command is rarely used directly instead you should use bundler to manage gems
 #  - BUNDLE
@@ -96,7 +96,7 @@
 #
 # Figure one shows us our Post class that inherits from ActiveRecord::Base
 #
-# #ACTIVE RECORD
+#  == ACTIVE RECORD ==
 # -> This is an implementation of object-relational mapping or ORM pattern
 # -> It essentially maps our classes and tables as well as attribute and columns
 #
@@ -147,7 +147,7 @@
 #  -> the timestamps field refers to both created_at and updated_at columns
 #  -> also rails automatically adds the id column
 #
-#  - The Schema
+#  == The Schema ==
 #  -> in addition to the migration files rails also stores you databases current state
 #  -> you can see it in db/schema.rb check the example below
 #  -----------------------------------------------
@@ -185,7 +185,7 @@
 #   remove_column method for removing a column from a table, and a change_column method
 #   for changing a columns type and default values **
 #
-# - Validations
+# == Validations ==
 #  - Active record validations are sets of rules created to protect your data
 #  - in this case since we are making a blog we should ensure all posts have a tile and we do that with a validation rule
 #  -----------------------------------------------
@@ -196,7 +196,7 @@
 #  - this validates the presence of the text in the title field
 #  - attempting to create a blog post with a blank title should now result in an error
 #
-# - Associations
+# == Associations ==
 #  - with more models there may be instances where you need to describe relationships between them
 #  - Active record associations describe relationshios between models
 #  - for our example we can associate posts and comments
@@ -210,7 +210,7 @@
 #  - in this case the key is named post_id because it references a post
 #  - now that we ran the migrations we need to edit our models to setup the associations
 #
-# - Adding Associations
+# == Adding Associations ==
 # -----------------------------------------------
 #   class Post < ActiveRecord::Base
 #     validates :title, :presence => true
@@ -292,6 +292,19 @@
 #       | Delete          | DELETE    |
 #       +-----------------+-----------+
 #
+#        Figure 4 - Table for default restful actions on rails
+#       +----------+--------------------------------+-----------+
+#       |  Action  |          Description           | HTTP Verb |
+#       +----------+--------------------------------+-----------+
+#       | index    | List all records               | GET       |
+#       | show     | list a record                  | GET       |
+#       | new      | Show form to create new record | GET       |
+#       | edit     | Show form to edit record       | GET       |
+#       | create   | Create new record              | POST      |
+#       | update   | Update existing record         | PATCH     |
+#       | destroy  | Destroy existing record        | DELETE    |
+#       +----------+--------------------------------+-----------+
+#
 #   -> Rails incorporates its own actions other than the four common rest actions
 #   -> index action - displays all resources
 #   -> new action - used for forms for creating a new resource
@@ -336,25 +349,58 @@
 #  -> when you make changes to your app your routes will also change so run this command
 #     when needed
 #
+#  * Nested Resources *
+#  -> Resources can be used to to represent how resources can be used based off another resource
+#  -> When one resource belongs to another they can be added as a nested resource
+#  - config/routes.rb
+# -----------------------------------------------
+#   resources :posts do
+#     resources :comments
+#   end
+# -----------------------------------------------
+#  -> the following shows that
+#  -> comments are only available inside of posts
+#  -> routes will be generated for comments
+#  * to restrict set of routes for a generated resource we can add an only clause
+# -----------------------------------------------
+#   resources :posts do
+#     resources :comments, only :create
+#   end
+# -----------------------------------------------
+#  * ^ comments routes will only be mapped to create action
+#
+#  == Custom Routes ==
+# -----------------------------------------------
+#  Rails.application.routes.draw do
+#     resources :posts do
+#       resources :comments, :only => :create
+#     end
+#     get 'login'  => 'user_sessions#new'
+#     post 'login' => 'user_session#create'
+#     delete 'logout' => 'user_sessions#destroy'
+#  end
+# -----------------------------------------------
+#  -> we can define custom routes as well for our application
+#  ->  /login on initial load will use http get and will hit user_session controller and new method
+#     - will present a login form
+#  ->  /login with creds will use post -> will use controller -> user_session#create
+#  -> /logout will will use delete -> will use controller user_sessions#destroy
+#
+# == Root Route ==
+# -----------------------------------------------
+#  Rails.application.routes.draw do
+#     resources :posts do
+#       resources :comments, :only => :create
+#     end
+#     root 'posts#index'
+#  end
+# -----------------------------------------------
+#  -> when accessing your applications server, the path will display the posts index page
+#  -> root will set the homepage for your application
+#
+# == Controller Actions ==
 #
 #
-#     Figure 4 - Table for default restful actions on rails
-#       +----------+--------------------------------+-----------+
-#       |  Action  |          Description           | HTTP Verb |
-#       +----------+--------------------------------+-----------+
-#       | index    | List all records               | GET       |
-#       | show     | list a record                  | GET       |
-#       | new      | Show form to create new record | GET       |
-#       | edit     | Show form to edit record       | GET       |
-#       | create   | Create new record              | POST      |
-#       | update   | Update existing record         | PATCH     |
-#       | destroy  | Destroy existing record        | DELETE    |
-#       +----------+--------------------------------+-----------+
-
-
-#
-#
-
 #
 #   /$$    /$$ /$$$$$$ /$$$$$$$$ /$$      /$$  /$$$$$$
 #  | $$   | $$|_  $$_/| $$_____/| $$  /$ | $$ /$$__  $$
