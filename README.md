@@ -8,3 +8,4 @@
 - Usually following along a video series or book 
 - Examples maybe provided first and then broken down and explained 
 - Each folder contains domain specific notes
+  
