@@ -457,10 +457,96 @@ INSERT INTO dogs(name, age) VALUES ('blue',3), ('jojo',6);
  *
  *  -- String functions allow us to work and manipulate string values from specific columns
  */
+-- Test data column from test.sql file
+--  book_id |                        title                        | author_fname |  author_lname  | released_year | stock_quantity | pages
+-- ---------+-----------------------------------------------------+--------------+----------------+---------------+----------------+-------
+--        1 | The Namesake                                        | Jhumpa       | Lahiri         |          2003 |             32 |   291
+--        2 | Norse Mythology                                     | Neil         | Gaiman         |          2016 |             43 |   304
+--        3 | American Gods                                       | Neil         | Gaiman         |          2001 |             12 |   465
+--        4 | Interpreter of Maladies                             | Jhumpa       | Lahiri         |          1996 |             97 |   198
+--        5 | A Hologram for the King: A Novel                    | Dave         | Eggers         |          2012 |            154 |   352
+--        6 | The Circle                                          | Dave         | Eggers         |          2013 |             26 |   504
+--        7 | The Amazing Adventures of Kavalier & Clay           | Michael      | Chabon         |          2000 |             68 |   634
+--        8 | Just Kids                                           | Patti        | Smith          |          2010 |             55 |   304
+--        9 | A Heartbreaking Work of Staggering Genius           | Dave         | Eggers         |          2001 |            104 |   437
+--       10 | Coraline                                            | Neil         | Gaiman         |          2003 |            100 |   208
+--       11 | What We Talk About When We Talk About Love: Stories | Raymond      | Carver         |          1981 |             23 |   176
+--       12 | Where I'm Calling From: Selected Stories            | Raymond      | Carver         |          1989 |             12 |   526
+--       13 | White Noise                                         | Don          | DeLillo        |          1985 |             49 |   320
+--       14 | Cannery Row                                         | John         | Steinbeck      |          1945 |             95 |   181
+--       15 | Oblivion: Stories                                   | David        | Foster Wallace |          2004 |            172 |   329
+--       16 | Consider the Lobster                                | David        | Foster Wallace |          2005 |             92 |   343
 
 --  CONCAT -> Combines two or strings. CONCAT(column_name1, 'text', column_name2)
 SELECT CONCAT(author_fname, ' ', author_lname) FROM books;
+-- returns the following
+--         concat
+-- ----------------------
+--  Jhumpa Lahiri
+--  Neil Gaiman
+--  Neil Gaiman
+--  Jhumpa Lahiri
+--  Dave Eggers
+--  Dave Eggers
+--  Michael Chabon
+--  Patti Smith
+--  Dave Eggers
+--  Neil Gaiman
+--  Raymond Carver
+--  Raymond Carver
+--  Don DeLillo
+--  John Steinbeck
+--  David Foster Wallace
+--  David Foster Wallace
+-- (16 rows)
 
---  CONCAT_WS -> Combines two or strings with a seperator between strings. CONCAT(column_name1, 'text', column_name2)
+
+--  CONCAT_WS -> Combines two or strings with a seperator between strings. CONCAT_WS ( separator, argument1, argument2 [, argumentN]... )
+SELECT CONCAT_WS(',', author_fname, author_lname) FROM books;
+-- returns the following
+--       concat_ws
+-- ----------------------
+--  Jhumpa,Lahiri
+--  Neil,Gaiman
+--  Neil,Gaiman
+--  Jhumpa,Lahiri
+--  Dave,Eggers
+--  Dave,Eggers
+--  Michael,Chabon
+--  Patti,Smith
+--  Dave,Eggers
+--  Neil,Gaiman
+--  Raymond,Carver
+--  Raymond,Carver
+--  Don,DeLillo
+--  John,Steinbeck
+--  David,Foster Wallace
+--  David,Foster Wallace
+
+-- SELECT SUBSTRING(column, starting index, ending index) index starts at 1
+SELECT SUBSTRING(title, 1, 10) FROM books;
+
+-- substring
+-- ------------
+--  The Namesa
+--  Norse Myth
+--  American G
+--  Interprete
+--  A Hologram
+--  The Circle
+--  The Amazin
+--  Just Kids
+--  A Heartbre
+--  Coraline
+--  What We Ta
+--  Where I'm
+--  White Nois
+--  Cannery Ro
+--  Oblivion:
+--  Consider t
+-- (16 rows)
 
 
+
+--  REVERSE(column)-> reverses a string value
+SELECT CONCAT(author_fname, REVERSE(author_fname)) FROM books;
