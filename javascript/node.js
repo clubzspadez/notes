@@ -53,22 +53,76 @@
 //
 //
 //
-/** 
+
+
+/*
+* *   What is node.js? : JavaScript runtime built on V8. Uses event-driven, non-blocking I/O model
+* -> A wrapper around a VM(virtual machine) like V8/Chakra
+*  - Comes with some feature rich built in modules(fs, http, crypto, zip, ...)
+*  - Comes with Asynchronous APIs (no threads)
+*  - C++ add ons
+*  - ships with great Debugger and other utilities
+*  - NPM
+*  - Module dependancy manager
+*  -
+*
+*
+* *  THE V8 JAVASCRIPT ENGINE
+*
+*
+*
+                            +------------------------+-------------------+
+                            |   Javascript(Chrome)   |        C++        |
+                            +------------------------+-------------------+
+                            | localeStorage.getItem  | Some C++ function |
+                            | document.querySelector | Some C++ function |
+                            +------------------------+-------------------+
+                            *
+
+                                              Results
+           +--------------------+      <-----------------------+    +---------------+
+           |                    |                                   |               |
+           |    CHROME          |                                   |      V8       |
+           |                    |         JavaScript code           |               |
+           +--------------------+      +----------------------->    +---------------+
+
+
+                             +------------------+-------------------+
+                             | Javascript(Node) |        C++        |
+                             +------------------+-------------------+
+                             | fs.readFile      | Some C++ function |
+                             | os.platform      | Some C++ function |
+                             +------------------+-------------------+
+                             *
+                                              Results
+           +--------------------+      <-----------------------+    +---------------+
+           |                    |                                   |               |
+           |    Node            |                                   |      V8       |
+           |                    |         JavaScript code           |               |
+           +--------------------+      +----------------------->    +---------------+
+*
+*
+*
+*
+* */
+/**
+ *
+ *
  * Basic node Exmaple
- * 
+ *
  * ! Description: Simple file that declares a few functions and invokes them
- * 
+ *
  * var mathlib = require('./lib/math');
  * var jokesLib = require('./lib.jokes');
- * 
+ *
  * // App Object
  * var  app = {};
- * 
+ *
  *  //Configuration
  *app.config ={
    'timeBetweenJokes' : 1000
- }; 
- * 
+ };
+ *
  * //Function that prints a random joke
  *app.printAJoke = function(){
 
@@ -86,33 +140,26 @@
 
   // Send the joke to the console
   console.log(selectedJoke);
-  
+
  };
  // function that loops indefinitely calling print joke
  app.initLoop = function(){
-  
+
   // setInterval https://nodejs.org/api/timers.html#timers_setinterval_callback_delay_args
   // setInterval(callback, delay[, ...args])
   setInterval(app.printAJoke, app.config.timeBetweenJokes)
 
  };
- * 
- * 
+ *
+ *
  * // init app
  * app.initloop();
- * 
- * 
- * 
- * 
- * 
- * 
- * * What is node? -> A wrapper around a VM(virtual machine) like V8/Chakra
- *  - Comes with some feature rich built in modules(fs, http, crypto, zip, ...)
- *  - Comes with Asynchronous APIs (no threads)
- *  - C++ add ons
- *  - ships with great Debugger and other utilities
- *  - NPM
- *  - Module dependancy manager
+ *
+ *
+ *
+ *
+ *
+ *
  *
  *
  *
