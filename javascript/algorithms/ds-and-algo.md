@@ -3,9 +3,9 @@
 ## Big O
 ![Big O Complexity Chart](bigOgraph.png)
 
-  > Best Case - $\Omega $
-  > Average Case - $ \theta $
-  > Worst Case - $ O (Omnicro)$
+   Best Case - $\Omega $
+   Average Case - $\theta$
+   Worst Case - $O$(Omnicron)
 
 <!-- $$ Log(O(n))$$ -->
 First Big O Notation Example
@@ -57,6 +57,7 @@ function logItems(n) {
 logItems(10)
 ```
 -> Our code runs n*n or $n^2$
+-> if our code runs n * n * n or anything over $n^2$ we can just simplify this to $n^2$ for worst case scenario
 ![O(n)](oofn2.png)
 
 ## Linked lists 
