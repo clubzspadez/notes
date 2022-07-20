@@ -22,6 +22,7 @@ function logItems(n) {
 logItems(10)
 ```
  -> In the example above we pass the fuction a number(n), and we are iterating n times
+
  -> The number of operations will be porportional to n
  
 ![O(n)](o(n).png)
@@ -41,6 +42,7 @@ function logItems(n) {
 logItems(10
 ```
 -> Our code ran n+n times or 2n
+
 -> However, with constants we can drop them $O(2n)$ -> $O(n)$
 
 $O(n^2)$(Horrible complexity)
@@ -57,6 +59,7 @@ function logItems(n) {
 logItems(10)
 ```
 -> Our code runs n*n or $n^2$
+
 -> if our code runs n * n * n or anything over $n^2$ we can just simplify this to $n^2$ for worst case scenario
 ![O(n)](oofn2.png)
 
